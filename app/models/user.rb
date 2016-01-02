@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  has_many :boards
+
+  validates :provider, presence: true
+  validates :uid, presence: true
+  validates :username, presence: true
 
   def self.find_or_create_from_omniauth(auth)
     provider = auth.provider

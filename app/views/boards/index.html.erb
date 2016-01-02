@@ -1,0 +1,18 @@
+<%= form_for(@board) do |f| %>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+<div class="uk-grid uk-grid-small uk-grid-width-1-1 uk-grid-width-medium-1-3 uk-grid-width-large-1-4">
+  <% @boards.each do |board| %>
+  <div class="">
+    <div class="uk-panel uk-panel-box">
+      <%= link_to board.name, board %>
+    </div>
+  </div>
+<% end %>

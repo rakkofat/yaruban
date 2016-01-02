@@ -8,10 +8,12 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
-<%= render 'layouts/flash' %>
+  <%= render 'layouts/header' %>
 
-<%= yield %>
+  <div class="uk-container uk-container-center">
+    <%= render 'layouts/flash' %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

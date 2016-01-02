@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   get '/auth/github/callback', to: 'sessions#github'
   get '/sign_out', to: 'sessions#destroy'
+
+  resources :boards
 end
