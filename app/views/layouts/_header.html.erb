@@ -5,16 +5,19 @@
 
   <div class="uk-navbar-flip">
     <ul class="uk-navbar-nav">
-      <li class="uk-parent" data-uk-dropdown><a href="">Log In</a>
+    <% if logged_in? %>
+      <li class="uk-parent" data-uk-dropdown><a href=""><%= current_user.username %></a>
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
-            <li><a href="">Log Out</a></li>
+            <li><%= link_to 'Sign Out', sign_out_path %></li>
           </ul>
         </div>
       </li>
+    <% else %>
+      <li><%= link_to "Sign in with Github", "/auth/github" %></li>
+    <% end %>
     </ul>
   </div>
-
 </nav>
 
 <div id="my-id" class="uk-offcanvas">
