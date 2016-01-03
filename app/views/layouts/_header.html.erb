@@ -1,7 +1,9 @@
 <nav class="uk-navbar">
-  <ul class="uk-navbar-nav uk-hidden-small"></ul>
-  <a href="#my-id" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-  <a href="" class="uk-navbar-brand">Yaruban</a>
+  <ul class="uk-navbar-nav"></ul>
+  <% if logged_in? %>
+    <a href="#my-id" class="uk-navbar-toggle" data-uk-offcanvas></a>
+  <% end %>
+    <a href="" class="uk-navbar-brand">Yaruban</a>
 
   <div class="uk-navbar-flip">
     <ul class="uk-navbar-nav">
@@ -20,6 +22,22 @@
   </div>
 </nav>
 
+<% if logged_in? %>
 <div id="my-id" class="uk-offcanvas">
-  <div class="uk-offcanvas-bar">...</div>
+  <div class="uk-offcanvas-bar">
+    <div class="uk-accordion" data-uk-accordion>
+
+      <h3 class="uk-accordion-title">New Board</h3>
+      <div class="uk-accordion-content">THis shouldn't show here</div>
+
+    </div>
+    <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+      <li class="uk-nav-header">My Boards</li>
+    <% current_boards.each do |board| %>
+      <li><%= link_to board.name, board %></li>
+    <% end %>
+    </ul>
+
+  </div>
 </div>
+<% end %>

@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :correct_user,   only: [:index, :show]
+  before_action :logged_in_user, only: [:index, :show]
 
   def index
     @board = Board.new
@@ -31,6 +33,18 @@ class BoardsController < ApplicationController
 
     def board_params
       params.require(:board).permit(:name)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to root_url
+      end
+    end
+
+    def correct_user
+      @user = User.find_by(id: session[:user_id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 
 end
